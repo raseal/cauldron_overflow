@@ -1,3 +1,7 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+    path: /
+    controller: App\Controller\QuestionController::homepage
+
+questions:
+    path: /questions/{slug}
+    controller: App\Controller\QuestionController::show
