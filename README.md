@@ -10,6 +10,13 @@ composer require template
 ````
 The recipe will create a `templates` folder in our project, but we can change its location via `config/packages/twig.yaml`
 
+### Assets and related stuff
+When including static assets it's recommended to use the `asset()` function:
+````
+composer require symfony/asset
+````
+This way, symfony will prefix **automatically** all the assets when needed (i.e., if we put them on a CDN or on a different subdomain).
+
 ## Symfony console
 Simply type `php bin/console` to see a list of commands.
 There are a lot of useful commands:
