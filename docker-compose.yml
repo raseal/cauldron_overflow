@@ -15,5 +15,6 @@ services:
       - 8000:80
     volumes:
       - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - ./public/:/app/public/
     depends_on:
       - app
