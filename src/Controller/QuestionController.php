@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use function sprintf;
 use function str_replace;
 
-class QuestionController
+class QuestionController extends AbstractController
 {
     public function homepage(): Response
     {
@@ -17,8 +17,18 @@ class QuestionController
 
     public function show(string $slug): Response
     {
-        return new Response(
-            sprintf('Future page to show the question "%s"!', str_replace('-', ' ', $slug))
+        $answers = [
+            'Answer 1',
+            'Answer 2',
+            'Answer 3',
+        ];
+
+        return $this->render(
+            'question/show.html.twig',
+            [
+                'question' => str_replace('-', ' ', $slug),
+                'answers' => $answers,
+            ]
         );
     }
 }

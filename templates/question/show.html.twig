@@ -1,0 +1,22 @@
+{# This line will include the base layout #}
+{% extends 'base.html.twig' %}
+
+{# We should change the <title> of the base layout too! #}
+{% block title %} Question: {{ question}} {% endblock %}
+
+{# Since this template is the body, we need to overwite the block "body" in the base layout #}
+{% block body %}
+<h1>{{ question }}</h1>
+
+<div>
+    Eventually, we'll print the full question here!
+</div>
+
+<h2>Answers ({{ answers|length }})</h2>
+
+<ul>
+    {% for answer in answers %}
+        <li>{{ answer }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
