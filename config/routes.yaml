@@ -5,3 +5,7 @@ homepage:
 question_show:
     path: /questions/{slug}
     controller: App\Controller\QuestionController::show
+
+vote_answer:
+    path: /comments/{id}/vote/{direction}
+    controller: App\Controller\CommentController::commentVote
