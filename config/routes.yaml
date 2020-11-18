@@ -7,5 +7,7 @@ question_show:
     controller: App\Controller\QuestionController::show
 
 vote_answer:
-    path: /comments/{id}/vote/{direction}
+    path: /comments/{id}/vote/{direction<up|down>}
     controller: App\Controller\CommentController::commentVote
+    methods:
+        - POST
