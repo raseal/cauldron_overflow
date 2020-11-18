@@ -46,4 +46,7 @@ This will include:
  - improved `dump()` : now the dump will be show on the profiler bar!
  - A new console command: `server:dump` : it will print every dump output into the terminal (very useful when debugging AJAX calls!)
  
+### Services
+By typing `bin/console debug:autowiring` we will see all service objects in the app.
 
+We can filter the list if we add part of the name of a service: `bin/console debug:autowiring log`
