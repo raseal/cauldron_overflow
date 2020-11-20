@@ -7,6 +7,7 @@ namespace App\Controller;
 use Knp\Bundle\MarkdownBundle\MarkdownParserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\Cache\CacheInterface;
 use function str_replace;
 
 class QuestionController extends AbstractController
@@ -16,7 +17,7 @@ class QuestionController extends AbstractController
         return $this->render('question/homepage.html.twig');
     }
 
-    public function show(string $slug, MarkdownParserInterface $markdown_parser): Response
+    public function show(string $slug, MarkdownParserInterface $markdown_parser, CacheInterface $cache): Response
     {
         $answers = [
             '`Answer` 1',
@@ -25,7 +26,10 @@ class QuestionController extends AbstractController
         ];
 
         $question_text = "I've been turned into a cat, any thoughts on how to turn back? While I'm **adorable**, I don't really care for cat food.";
-        $parsed_question_text = $markdown_parser->transformMarkdown($question_text);
+
+        $parsed_question_text = $cache->get('markdown_' . md5($question_text), function() use($question_text, $markdown_parser) {
+            return $markdown_parser->transformMarkdown($question_text);
+        });
 
         return $this->render(
             'question/show.html.twig',
