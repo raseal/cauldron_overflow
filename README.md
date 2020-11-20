@@ -50,3 +50,9 @@ This will include:
 By typing `bin/console debug:autowiring` we will see all service objects in the app.
 
 We can filter the list if we add part of the name of a service: `bin/console debug:autowiring log`
+
+If we want to see all services enabled in the `services container`, we only have to type:
+````
+ bin/console debug:container
+````
+**Please note not all the services are accessible! Only the services listed as `autowired` are!**
